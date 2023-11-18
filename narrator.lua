@@ -98,7 +98,7 @@ local narrator = { }
 ---@param path string
 ---@param params Narrator.ParsingParams|nil
 ---@return Narrator.Book
-function narrator.parse_file(path, params)
+function narrator.parse_file(path, export, params)
   local params = params or { save = false }
   assert(parser, 'Can\'t parse anything without lpeg, sorry.')
 
@@ -114,7 +114,7 @@ function narrator.parse_file(path, params)
   end
 
   if params.save then
-    save_book(book, path)
+    save_book(book, export)
   end
 
   return book
